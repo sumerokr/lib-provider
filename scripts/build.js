@@ -1,4 +1,5 @@
 const execa = require("execa");
+const fs = require("fs");
 
 const components = {
   K24Button: "src/components/K24Button/K24Button.vue",
@@ -10,7 +11,6 @@ const entries = Object.entries(components);
 const fn = async () => {
   try {
     for (let [name, path] of entries) {
-      console.log(name, path);
       const { stdout } = await execa("vue-cli-service", [
         "build",
         "--target",
@@ -23,6 +23,20 @@ const fn = async () => {
         `dist/${name}`,
         path,
       ]);
+
+      fs.rename(
+        `dist/${name}/${name}.umd.js`,
+        `dist/${name}/index.js`,
+        function(err) {
+          if (err) console.log(err);
+          console.log(
+            `dist/${name}/${name}.umd.js`,
+            "renamed to",
+            `dist/${name}/index.js`
+          );
+        }
+      );
+
       console.log(stdout);
     }
   } catch (e) {

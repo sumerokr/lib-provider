@@ -1,6 +1,6 @@
 {
   "name": "lib-provider",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "main": "dist/lib-provider.umd.min.js",
   "scripts": {

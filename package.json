@@ -1,12 +1,14 @@
 {
   "name": "lib-provider",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": false,
-  "main": "dist/lib-provider.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name lib-provider src/main.js",
     "prepublishOnly": "$npm_execpath run build",
+    "build": "vue-cli-service build",
+    "build:lib": "vue-cli-service build --target lib",
+    "build:args": "vue-cli-service build --target lib --name $npm_config_name --formats umd --dest dist/$npm_config_name src/components/$npm_config_name/$npm_config_name.vue",
+    "build:script": "node ./scripts/build.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

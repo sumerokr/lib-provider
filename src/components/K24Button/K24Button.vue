@@ -1,13 +1,16 @@
 <template>
-  <button class="k24-button"><img src="@/assets/logo.png" width="20" height="20"> K24 Button. {{ Object.entries($data).map(([key, val]) => `${key}: ${val}`).join('; ') }}</button>
+  <button class="k24-button">{{ camelCased }} K24 Button. {{ Object.entries($data).map(([key, val]) => `${key}: ${val}`).join('; ') }}</button>
 </template>
 
 <script>
+import camelCase from "lodash/camelCase";
+
 export default {
   name: 'K24Button',
 
   data() {
     return {
+      camelSource: "some tExt to be camel cased",
       host: "localhost:8080",
       hostname: "localhost",
       href: "http://localhost:8080/",
@@ -16,6 +19,12 @@ export default {
       port: "8080",
       protocol: "http:",
     };
+  },
+
+  computed: {
+    camelCased() {
+      return camelCase(this.camelSource);
+    }
   }
 }
 </script>

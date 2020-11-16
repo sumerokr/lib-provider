@@ -1,5 +1,5 @@
 <template>
-  <button class="k24-button">K24 Button. {{ Object.entries($data).map(([key, val]) => `${key}: ${val}`).join('; ') }}</button>
+  <button class="k24-button"><img src="@/assets/logo.png" width="20" height="20"> K24 Button. {{ Object.entries($data).map(([key, val]) => `${key}: ${val}`).join('; ') }}</button>
 </template>
 
 <script>
